@@ -85,6 +85,7 @@ Player.prototype.reset = function () {
     this.y = 400;
 };
 var score = 0;
+//increments score on safely moving accross the screen
 Player.prototype.resetOnWin = function () {
     this.x = 200;
     this.y = 400;
