@@ -3,7 +3,7 @@ var Ystep = 82;
 var Xleft = 0;
 var Xright = 400;
 var Yup = 80;
-var Ydown = 408;
+var Ydown = 400;
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
@@ -57,7 +57,7 @@ Player.prototype.handleInput = function (key) {
     case 'up':
         if (this.y > Yup)
         this.y -=Ystep;
-        else player.reset();
+        else player.resetOnWin();
         break;
     case 'down':
         if (this.y < Ydown)
@@ -82,7 +82,14 @@ document.addEventListener('keyup', function(e) {
 //resets player to its starting position
 Player.prototype.reset = function () {
     this.x = 200;
-    this.y = 408;
+    this.y = 400;
+};
+var score = 0;
+Player.prototype.resetOnWin = function () {
+    this.x = 200;
+    this.y = 400;
+    score++;
+    document.getElementById('score').innerHTML = 'Score: '+score;
 };
 Player.prototype.update = function() {
 //resets game on enemies/player collisions    
@@ -105,4 +112,4 @@ allEnemies.push(enemy4);
 var enemy5 = new Enemy(-300, 150);
 allEnemies.push(enemy5);
 //creates player
-var player = new Player(200, 408);
+var player = new Player(200, 400);
